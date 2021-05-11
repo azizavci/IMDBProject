@@ -35,7 +35,14 @@
             android:id="@+id/tv_rating"
             android:text="Puan"
             android:layout_marginTop="20dp"/>
+        <ImageButton
+            android:id="@+id/favButon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:background="@drawable/fav_add" />
     </LinearLayout>
+
 
 
 </LinearLayout>

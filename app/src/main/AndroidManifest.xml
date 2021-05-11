@@ -12,11 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IMDBProject">
-        <activity android:name=".activities.AllMovies"></activity>
+        <activity android:name=".activities.FavoriteMoviesActivity"></activity>
+        <activity android:name=".activities.AllMovies" />
         <activity android:name=".activities.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -28,9 +28,15 @@
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
-            android:layout_height="181dp"
+            android:layout_height="wrap_content"
             android:text="Button"
             android:onClick="toAllMoviesPage"/>
+
+        <Button
+            android:id="@+id/favListBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Favori Filmlerim" />
 
         <TextView
             android:layout_width="match_parent"

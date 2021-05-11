@@ -4,8 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -31,6 +38,8 @@ public class AllMovies extends AppCompatActivity {
     private RequestQueue requestQueue;
     private List<Movie> movies;
     private RecyclerView recyclerView;
+    private MovieRecyclerViewAdapter myadapter;
+    private SearchView searchView;
 
 
     @Override
@@ -42,12 +51,66 @@ public class AllMovies extends AppCompatActivity {
 
         initComponents();
         jsonRequest();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                myadapter.getFilter().filter(newText);
+                return true;
+            }
+        });
+
+
     }
 
     private void initComponents() {
 
         recyclerView = findViewById(R.id.rv_movies);
+        searchView = findViewById(R.id.searchview_movie);
     }
+
+
+
+    /*
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.search_menu, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+
+        SearchView searchView = null;
+        if (searchItem != null) {
+            searchView = (SearchView) searchItem.getActionView();
+        }
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                myadapter.getFilter().filter(newText);
+                return true;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
+    */
 
     private void jsonRequest() {
         request = new JsonArrayRequest(JSON_URL, new Response.Listener<JSONArray>() {
@@ -61,9 +124,7 @@ public class AllMovies extends AppCompatActivity {
 
                 for (int i = 0; i < response.length(); i++) {
 
-
                     try {
-
 
                         jsonObject = response.getJSONObject(i);
                         Movie movie = new Movie();
@@ -80,8 +141,6 @@ public class AllMovies extends AppCompatActivity {
                 }
 
                 setuprecyclerview(movies);
-
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -90,17 +149,14 @@ public class AllMovies extends AppCompatActivity {
             }
         });
 
-
         requestQueue = Volley.newRequestQueue(AllMovies.this);
         requestQueue.add(request);
-
 
     }
 
     private void setuprecyclerview(List<Movie> movies) {
 
-
-        MovieRecyclerViewAdapter myadapter = new MovieRecyclerViewAdapter(this, movies);
+        myadapter = new MovieRecyclerViewAdapter(this, movies);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(myadapter);
 

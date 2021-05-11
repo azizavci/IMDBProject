@@ -35,9 +35,14 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.navigation:navigation-fragment:2.3.3'
     implementation 'androidx.navigation:navigation-ui:2.3.3'
+    implementation 'androidx.room:room-runtime:2.2.5'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation 'androidx.sqlite:sqlite:2.1.0'
+    implementation 'androidx.sqlite:sqlite-framework:2.1.0'
+    implementation 'androidx.room:room-runtime:2.3.0-rc01'
+    annotationProcessor 'androidx.room:room-compiler:2.3.0-rc01'
 
 
     //Glide
@@ -46,5 +51,6 @@ dependencies {
 
     //Volley
     implementation 'com.android.volley:volley:1.2.0'
+    annotationProcessor 'androidx.room:room-compiler:2.2.5'
 
 }
