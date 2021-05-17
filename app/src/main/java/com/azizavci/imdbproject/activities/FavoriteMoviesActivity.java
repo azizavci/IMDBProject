@@ -28,20 +28,24 @@ public class FavoriteMoviesActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ImageButton home,paylas;
     public List<String> favorilerListesi;
+    private TextView tv_backToolbarTextView;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.favorite_movies);
+
         film = new ArrayList<>();
         favorilerListesi = new ArrayList<>();
 
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.favorite_movies);
         initComponents();
         registerEventHandlers();
         databaseRequest();
         setuprecyclerview();
+
+        tv_backToolbarTextView.setText(R.string.favoritesPage);
+
 
     }
 
@@ -50,6 +54,7 @@ public class FavoriteMoviesActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         paylas=findViewById(R.id.share);
         home = findViewById(R.id.home);
+        tv_backToolbarTextView=findViewById(R.id.tv_backToolbarTextView);
 
     }
 
@@ -74,13 +79,7 @@ public class FavoriteMoviesActivity extends AppCompatActivity {
             }
         });
 
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(FavoriteMoviesActivity.this,MainActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
     }
 
@@ -101,5 +100,8 @@ public class FavoriteMoviesActivity extends AppCompatActivity {
 
     }
 
+    public void clickBack(View view){
+        finish();
+    }
 
 }

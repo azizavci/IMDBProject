@@ -37,7 +37,6 @@ public class Functions {
     public void redirectActivity(Activity activity, Class aClass) {
         Intent intent = new Intent(activity, aClass);
         activity.startActivity(intent);
-        activity.finish();
     }
 
     public static void openDrawer(DrawerLayout drawerLayout) {

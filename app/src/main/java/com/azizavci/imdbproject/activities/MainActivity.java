@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button favListBtn;
     private Button categoriesBtn;
-    DrawerLayout drawerLayout;
+    public DrawerLayout drawerLayout;
     Functions functions = new Functions();
 
     @Override
@@ -52,10 +52,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
     private void initComponents() {
-        drawerLayout = findViewById(R.id.drawer_layout_home);
+        drawerLayout = findViewById(R.id.drawer_menu);
         favListBtn=findViewById(R.id.favListBtn);
         categoriesBtn=findViewById(R.id.button2);
     }
@@ -70,32 +68,29 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void clickLogo(View view) {
+    public void toHome(View view) {
+
         functions.closeDrawer(drawerLayout);
+
     }
 
-    public void clickHome(View view) {
-        functions.closeDrawer(drawerLayout);
+    public void toCategories(View view) {
+
+        Intent intent = new Intent(MainActivity.this, AllCategories.class);
+        startActivity(intent);
+
     }
 
-    public void clickDashBoard(View view) {
-        //redirect activity to dashboard
-        //functions.redirectActivity(this, Dashboard.class);
-    }
+    public void clickAllMovies(View view) {
 
-    public void clickAboutUs(View view) {
-        //redirect activity to about us
-        //functions.redirectActivity(this, AboutUs.class);
-    }
+        functions.redirectActivity(MainActivity.this, AllMovies.class);
 
-    public void clickLogin(View view) {
-
-        //functions.redirectActivity(this, Account.class);
     }
 
     public void clickLogout(View view) {
-        //close app
-        //functions.LogOut(this);
+
+        functions.LogOut(MainActivity.this);
+
     }
 
     @Override

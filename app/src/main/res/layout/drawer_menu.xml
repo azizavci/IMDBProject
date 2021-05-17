@@ -25,7 +25,7 @@
         android:layout_height="1dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:background="#234AA8" />
+        android:background="@color/imdb_darkBlue" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,15 +38,16 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_weight="1"
+            android:onClick="toHome"
             android:padding="12dp"
-            android:textColor="#48B0F5"
-            android:text="Anasayfa" />
+            android:text="@string/homePage"
+            android:textColor="#48B0F5" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_home"
-            android:layout_marginEnd="48dp" />
+            android:layout_marginEnd="48dp"
+            android:src="@drawable/ic_home" />
 
     </LinearLayout>
 
@@ -61,16 +62,16 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_weight="1"
+            android:onClick="toCategories"
             android:padding="12dp"
-            android:textColor="#48B0F5"
-            android:text="Kategoriler" />
+            android:text="@string/categories"
+            android:textColor="@color/imdb_blue" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="48dp"
-            android:src="@drawable/ic_category"
-            />
+            android:src="@drawable/ic_category" />
 
     </LinearLayout>
 
@@ -85,16 +86,16 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_weight="1"
+            android:onClick="clickAllMovies"
             android:padding="12dp"
-            android:textColor="#48B0F5"
-            android:text="Filmler" />
+            android:text="@string/movies"
+            android:textColor="@color/imdb_blue" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="48dp"
-            android:src="@drawable/ic_movies"
-            />
+            android:src="@drawable/ic_movies" />
 
     </LinearLayout>
 
@@ -109,16 +110,16 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_weight="1"
+            android:onClick="clickLogout"
             android:padding="12dp"
-            android:textColor="#48B0F5"
-            android:text="Çıkış Yap" />
+            android:text="@string/logOut"
+            android:textColor="@color/imdb_blue" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="48dp"
-            android:src="@drawable/ic_exit"
-            />
+            android:src="@drawable/ic_exit" />
 
     </LinearLayout>
 

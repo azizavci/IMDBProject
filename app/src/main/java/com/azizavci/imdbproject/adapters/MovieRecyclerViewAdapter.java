@@ -84,6 +84,14 @@ public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecycler
             public void onClick(View v) {
                 Intent intent=new Intent(context, MovieDetails.class);
                 intent.putExtra("title",data.get(position).getTitle());
+                intent.putExtra("rating",(data.get(position).getRating())/2);
+                intent.putExtra("genres",data.get(position).getGenres());
+                intent.putExtra("director",data.get(position).getDirector());
+                intent.putExtra("year",data.get(position).getYear());
+                intent.putExtra("actors",data.get(position).getActors());
+                intent.putExtra("runtime",data.get(position).getRuntime());
+                intent.putExtra("producer",data.get(position).getProducer());
+
                 context.startActivity(intent);
             }
         });

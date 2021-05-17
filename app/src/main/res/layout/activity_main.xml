@@ -2,11 +2,10 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MainActivity"
-    android:id="@+id/drawer_layout_home"
-    >
+    tools:context=".activities.MainActivity">
 
     <RelativeLayout
         android:layout_width="300dp"
@@ -14,10 +13,10 @@
         android:layout_gravity="start"
         android:background="@android:color/white">
 
-        <include
-            layout="@layout/drawer_menu"/>
+        <include layout="@layout/drawer_menu" />
 
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,14 +28,15 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="filmler"
-            android:onClick="toAllMoviesPage"/>
+            android:onClick="toAllMoviesPage"
+            android:text="filmler" />
+
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Categoriler"
-            android:onClick="toAllMoviesPage"/>
+            android:onClick="toAllMoviesPage"
+            android:text="Categoriler" />
 
         <Button
             android:id="@+id/favListBtn"
@@ -48,12 +48,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="Anasayfa"
+            android:text="@string/homePage"
             android:textSize="50sp"
             android:textStyle="bold" />
 
     </LinearLayout>
-
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

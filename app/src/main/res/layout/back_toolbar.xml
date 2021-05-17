@@ -12,5 +12,17 @@
         android:layout_height="wrap_content"
         android:onClick="clickBack"
         android:src="@drawable/ic_back" />
+    <TextView
+        android:id="@+id/tv_backToolbarTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="@string/empty"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/imdb_grey"/>
 
 </LinearLayout>

@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -41,6 +42,7 @@ public class AllMovies extends AppCompatActivity {
     private MovieRecyclerViewAdapter myadapter;
     private SearchView searchView;
     private String categoryName;
+    private TextView tv_backToolbarTextView;
 
 
     @Override
@@ -52,6 +54,8 @@ public class AllMovies extends AppCompatActivity {
 
         initComponents();
         jsonRequest();
+
+        tv_backToolbarTextView.setText(R.string.allMoviesPage);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -71,6 +75,7 @@ public class AllMovies extends AppCompatActivity {
 
     private void initComponents() {
 
+        tv_backToolbarTextView=findViewById(R.id.tv_backToolbarTextView);
         recyclerView = findViewById(R.id.rv_movies);
         searchView = findViewById(R.id.searchview_movie);
     }
@@ -90,11 +95,17 @@ public class AllMovies extends AppCompatActivity {
 
                     try {
 
+                        List<String> actors=new ArrayList<>();
                         jsonObject = response.getJSONObject(i);
+                        jsonArray=response.getJSONArray(i);
                         Movie movie = new Movie();
                         movie.setTitle(jsonObject.getString("title"));
                         movie.setRating(jsonObject.getDouble("rating"));
                         movie.setGenres(jsonObject.getString("genreSearch"));
+
+
+
+
 
                         movies.add(movie);
 
@@ -149,5 +160,8 @@ public class AllMovies extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    public void clickBack(View view){
+        finish();
+    }
 
 }

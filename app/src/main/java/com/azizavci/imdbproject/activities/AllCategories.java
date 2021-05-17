@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import com.azizavci.imdbproject.R;
 import com.azizavci.imdbproject.adapters.CategoryRecyclerViewAdapter;
@@ -20,6 +22,8 @@ public class AllCategories extends AppCompatActivity {
     List<Category> categoryList=new ArrayList<>();
     private CategoryRecyclerViewAdapter myadapter;
     private RecyclerView recyclerView;
+    private TextView tv_backToolbarTextView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +34,13 @@ public class AllCategories extends AppCompatActivity {
         addCategory();
         setuprecyclerview(categoryList);
 
+        tv_backToolbarTextView.setText(R.string.allCategoriesPage);
+
+
     }
     private void setuprecyclerview(List<Category> categories) {
 
+        tv_backToolbarTextView=findViewById(R.id.tv_backToolbarTextView);
         myadapter = new CategoryRecyclerViewAdapter(AllCategories.this,categories);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(myadapter);
@@ -67,7 +75,9 @@ public class AllCategories extends AppCompatActivity {
         categoryList.add(new Category(18,"sport"));
         categoryList.add(new Category(19,"thriller"));
         categoryList.add(new Category(20,"war"));
+    }
 
-
+    public void clickBack(View view){
+        finish();
     }
 }

@@ -7,6 +7,7 @@
     tools:context=".activities.AllMovies"
     android:orientation="vertical">
 
+     <include layout="@layout/back_toolbar"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

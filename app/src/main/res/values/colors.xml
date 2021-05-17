@@ -9,5 +9,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="bg_color">#F9E79F </color>
 
+
     // IMDB COLORS
+    <color name="imdb_blue">#48B0F5</color>
+    <color name="imdb_darkBlue">#234AA8</color>
+    <color name="imdb_grey">#4c4d4e</color>
+
 </resources>
