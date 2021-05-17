@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -83,5 +84,9 @@ public class MovieDetails extends AppCompatActivity {
 
         rb_ratingBar.setRating(rating.floatValue()/2);
 
+    }
+
+    public void clickBack(View view) {
+        finish();
     }
 }

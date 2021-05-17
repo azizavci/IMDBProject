@@ -20,7 +20,7 @@ public class Splash extends AppCompatActivity {
     Animation topAnimation;
     Animation bottomAnimation;
     ImageView logo;
-    TextView designedBy, year;
+    TextView year;
 
 
     @Override
@@ -40,11 +40,9 @@ public class Splash extends AppCompatActivity {
 
 
         logo = findViewById(R.id.logo);
-        designedBy = findViewById(R.id.designedBy);
         year = findViewById(R.id.year);
 
         logo.setAnimation(topAnimation);
-        designedBy.setAnimation(bottomAnimation);
         year.setAnimation(bottomAnimation);
 
         new Handler().postDelayed(new Runnable() {
