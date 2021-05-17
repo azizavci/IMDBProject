@@ -44,13 +44,15 @@
             android:layout_height="wrap_content"
             android:text="Favori Filmlerim" />
 
-        <TextView
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="@string/homePage"
-            android:textSize="50sp"
-            android:textStyle="bold" />
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/rv_recommendedMovies">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
     </LinearLayout>
 

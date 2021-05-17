@@ -1,6 +1,5 @@
 package com.azizavci.imdbproject.activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,14 +9,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import com.azizavci.imdbproject.R;
 import com.azizavci.imdbproject.adapters.FavoriteMoviesRecyclerViewAdapter;
-import com.azizavci.imdbproject.adapters.MovieRecyclerViewAdapter;
 import com.azizavci.imdbproject.models.AppDatabase;
 import com.azizavci.imdbproject.models.FavList;
-import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 import java.util.List;

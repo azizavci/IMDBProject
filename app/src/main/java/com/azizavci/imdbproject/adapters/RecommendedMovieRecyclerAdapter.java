@@ -25,10 +25,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
-public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecyclerViewAdapter.MovieViewHolder> implements Filterable {
+public class RecommendedMovieRecyclerAdapter extends RecyclerView.Adapter<RecommendedMovieRecyclerAdapter.MovieViewHolder> {
 
     public static Context context;
     private List<Movie> data;
@@ -36,7 +35,7 @@ public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecycler
 
     RequestOptions option;
 
-    public MovieRecyclerViewAdapter(Context context, List<Movie> data) {
+    public RecommendedMovieRecyclerAdapter(Context context, List<Movie> data) {
         this.context = context;
         this.data = data;
         this.filteredData = new ArrayList<>(data);
@@ -100,41 +99,6 @@ public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecycler
     public int getItemCount() {
         return this.data.size();
     }
-
-    @Override
-    public Filter getFilter() {
-        return filter;
-    }
-
-    Filter filter = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence charSequence) {
-            List<Movie> filteredList = new ArrayList<>();
-            if (charSequence.toString().isEmpty()) {
-                filteredList.addAll(filteredData);
-
-            } else {
-                for (Movie movie : filteredData) {
-                    if (movie.getTitle().toLowerCase().contains(charSequence.toString().toLowerCase()) ||
-                            movie.getGenres().toLowerCase().contains("|" + charSequence.toString().toLowerCase() + "|")) {
-                        filteredList.add(movie);
-                    }
-                }
-            }
-            FilterResults filterResults = new FilterResults();
-            filterResults.values = filteredList;
-            return filterResults;
-        }
-
-
-        @Override
-        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-            data.clear();
-            data.addAll((Collection<? extends Movie>) filterResults.values);
-            notifyDataSetChanged();
-
-        }
-    };
 
     public static class MovieViewHolder extends RecyclerView.ViewHolder {
 

@@ -1,21 +1,16 @@
 package com.azizavci.imdbproject.activities;
 
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.SearchView;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.SearchView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -30,7 +25,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class AllMovies extends AppCompatActivity {
@@ -40,9 +34,8 @@ public class AllMovies extends AppCompatActivity {
     private RequestQueue requestQueue;
     private List<Movie> movies;
     private RecyclerView recyclerView;
-    private MovieRecyclerViewAdapter myadapter;
+    public MovieRecyclerViewAdapter myadapter;
     private SearchView searchView;
-    private String categoryName;
     private TextView tv_backToolbarTextView;
 
 
@@ -67,8 +60,8 @@ public class AllMovies extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
 
-                    myadapter.getFilter().filter(newText);
-                    return true;
+                myadapter.getFilter().filter(newText);
+                return true;
             }
         });
 
@@ -76,13 +69,13 @@ public class AllMovies extends AppCompatActivity {
 
     private void initComponents() {
 
-        tv_backToolbarTextView=findViewById(R.id.tv_backToolbarTextView);
+        tv_backToolbarTextView = findViewById(R.id.tv_backToolbarTextView);
         recyclerView = findViewById(R.id.rv_movies);
         searchView = findViewById(R.id.searchview_movie);
     }
 
 
-    private void jsonRequest() {
+    public void jsonRequest() {
         request = new JsonArrayRequest(JSON_URL, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -96,21 +89,17 @@ public class AllMovies extends AppCompatActivity {
 
                     try {
 
-                        List<String> actors=new ArrayList<>();
                         jsonObject = response.getJSONObject(i);
-                        jsonArray=response.getJSONArray(i);
                         Movie movie = new Movie();
+
                         movie.setTitle(jsonObject.getString("title"));
                         movie.setRating(jsonObject.getDouble("rating"));
                         movie.setGenres(jsonObject.getString("genreSearch"));
-
-                        for (int j=0; i<jsonArray.length(); j++){
-                            actors.add(jsonArray.getJSONObject(j).getString("actor"));
-                        }
-
-
-
-
+                        movie.setYear(jsonObject.getInt("year"));
+                        movie.setRuntime(jsonObject.getInt("runtime"));
+                        movie.setActor(jsonObject.getJSONArray("roles").getJSONObject(0).getString("name"));
+                        movie.setDirector(jsonObject.getJSONArray("roles").getJSONObject(1).getString("name"));
+                        movie.setProducer(jsonObject.getJSONArray("roles").getJSONObject(2).getString("name"));
 
                         movies.add(movie);
 
@@ -165,7 +154,7 @@ public class AllMovies extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    public void clickBack(View view){
+    public void clickBack(View view) {
         finish();
     }
 

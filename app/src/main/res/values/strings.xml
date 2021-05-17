@@ -20,6 +20,8 @@
     <string name="allMoviesPage">Tüm Filmler</string>
     <string name="allCategoriesPage">Kategoriler</string>
     <string name="homePage">Anasayfa</string>
+    <string name="movieDetailPage">Film Detayı</string>
+
 
 
     // IMDB MOVIE

@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.azizavci.imdbproject.R;
 import com.azizavci.imdbproject.activities.AllMovies;
 import com.azizavci.imdbproject.models.Category;
-import com.azizavci.imdbproject.models.Movie;
 
 import java.util.ArrayList;
 import java.util.Collection;
