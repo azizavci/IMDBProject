@@ -30,6 +30,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class AllMovies extends AppCompatActivity {
@@ -102,6 +103,10 @@ public class AllMovies extends AppCompatActivity {
                         movie.setTitle(jsonObject.getString("title"));
                         movie.setRating(jsonObject.getDouble("rating"));
                         movie.setGenres(jsonObject.getString("genreSearch"));
+
+                        for (int j=0; i<jsonArray.length(); j++){
+                            actors.add(jsonArray.getJSONObject(j).getString("actor"));
+                        }
 
 
 
