@@ -40,6 +40,7 @@ public class AllMovies extends AppCompatActivity {
     private RecyclerView recyclerView;
     private MovieRecyclerViewAdapter myadapter;
     private SearchView searchView;
+    private String categoryName;
 
 
     @Override
@@ -55,17 +56,16 @@ public class AllMovies extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                myadapter.getFilter().filter(newText);
-                return true;
+
+                    myadapter.getFilter().filter(newText);
+                    return true;
             }
         });
-
 
     }
 
@@ -75,42 +75,6 @@ public class AllMovies extends AppCompatActivity {
         searchView = findViewById(R.id.searchview_movie);
     }
 
-
-
-    /*
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.search_menu, menu);
-
-        MenuItem searchItem = menu.findItem(R.id.action_search);
-
-        SearchView searchView = null;
-        if (searchItem != null) {
-            searchView = (SearchView) searchItem.getActionView();
-        }
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                myadapter.getFilter().filter(newText);
-                return true;
-            }
-        });
-
-        return super.onCreateOptionsMenu(menu);
-    }
-
-
-    */
 
     private void jsonRequest() {
         request = new JsonArrayRequest(JSON_URL, new Response.Listener<JSONArray>() {
@@ -160,6 +124,29 @@ public class AllMovies extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(myadapter);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.search_menu, menu);
+
+        MenuItem item = menu.findItem(R.id.action_search);
+        androidx.appcompat.widget.SearchView searchView = (androidx.appcompat.widget.SearchView) item.getActionView();
+        searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                myadapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
     }
 
 

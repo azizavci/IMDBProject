@@ -1,17 +1,17 @@
 package com.azizavci.imdbproject.models;
 
 public class Movie {
-    int id;
-    String title;
-    int year;
-    int runtime;
-    double rating;
-    int totalScore;
-    String genres;
-    String[] actors;
-    String[] director;
-    String[] producer;
-    String imageUrl;
+    private int id;
+    private String title;
+    private int year;
+    private int runtime;
+    private double rating;
+    private int totalScore;
+    private String genres;
+    private String[] actors;
+    private String[] director;
+    private String[] producer;
+    private String imageUrl;
 
     public Movie() {
     }

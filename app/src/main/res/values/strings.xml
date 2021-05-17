@@ -7,6 +7,17 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
+    //IMDB MOVIE
+    <string name="title">Başlık</string>
+    <string name="year">Yıl</string>
+    <string name="runtime">Süre</string>
+    <string name="actors">Oyuncular</string>
+    <string name="producer">Yapımcı</string>
+    <string name="director">Yönetmen</string>
+    <string name="rating">IMDB Puanı</string>
+    <string name="genres">Kategoriler</string>
+
+
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

@@ -6,6 +6,8 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.azizavci.imdbproject.dataAccess.FavDao;
+
 @Database(entities = {FavList.class},version=1, exportSchema = true)
 public abstract class AppDatabase extends RoomDatabase {
 

@@ -1,4 +1,4 @@
-package com.azizavci.imdbproject.models;
+package com.azizavci.imdbproject.dataAccess;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -6,10 +6,8 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-
 import com.azizavci.imdbproject.models.FavList;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Dao
@@ -26,6 +24,4 @@ public interface FavDao {
     FavList getFilm(String filmAdi);
     @Query("SELECT film_Adi FROM fav_list GROUP BY film_Adi")
     List<String> getAllFilmAdi();
-
-
 }

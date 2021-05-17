@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private Button favListBtn;
+    private Button categoriesBtn;
     DrawerLayout drawerLayout;
     Functions functions = new Functions();
 
@@ -40,6 +41,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        categoriesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(MainActivity.this, AllCategories.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
@@ -48,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     private void initComponents() {
         drawerLayout = findViewById(R.id.drawer_layout_home);
         favListBtn=findViewById(R.id.favListBtn);
+        categoriesBtn=findViewById(R.id.button2);
     }
 
     public void clickMenu(View view) {

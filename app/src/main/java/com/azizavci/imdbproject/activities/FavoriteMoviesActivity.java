@@ -1,52 +1,60 @@
 package com.azizavci.imdbproject.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.azizavci.imdbproject.R;
 import com.azizavci.imdbproject.adapters.FavoriteMoviesRecyclerViewAdapter;
 import com.azizavci.imdbproject.adapters.MovieRecyclerViewAdapter;
 import com.azizavci.imdbproject.models.AppDatabase;
 import com.azizavci.imdbproject.models.FavList;
+import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FavoriteMoviesActivity extends AppCompatActivity {
+
     public List<FavList> film;
     private RecyclerView recyclerView;
-    private ImageButton paylas;
+    private ImageButton home,paylas;
     public List<String> favorilerListesi;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-       film = new ArrayList<>();
-       favorilerListesi = new ArrayList<>();
+        film = new ArrayList<>();
+        favorilerListesi = new ArrayList<>();
+
 
         super.onCreate(savedInstanceState);
-        initComponents();
         setContentView(R.layout.favorite_movies);
-        recyclerView=findViewById(R.id.fav_recyclerview);
-        paylas=findViewById(R.id.share);
+        initComponents();
         registerEventHandlers();
-
         databaseRequest();
+        setuprecyclerview();
 
-        AppDatabase appDatabase = AppDatabase.getAppDatabase(this);
-        film = appDatabase.getFavDao().loadAllFavList();
-        favorilerListesi = appDatabase.getFavDao().getAllFilmAdi();
+    }
 
-        FavoriteMoviesRecyclerViewAdapter favAdapter = new FavoriteMoviesRecyclerViewAdapter(this,film);
+    private void initComponents() {
+        recyclerView=findViewById(R.id.fav_recyclerview);
+        recyclerView.setHasFixedSize(true);
+        paylas=findViewById(R.id.share);
+        home = findViewById(R.id.home);
 
-        recyclerView.setAdapter(favAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
 
+
+    private void registerEventHandlers() {
         paylas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,22 +74,32 @@ public class FavoriteMoviesActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    private void registerEventHandlers() {
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FavoriteMoviesActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
     private void databaseRequest() {
+        AppDatabase appDatabase = AppDatabase.getAppDatabase(this);
+        film = appDatabase.getFavDao().loadAllFavList();
+        favorilerListesi = appDatabase.getFavDao().getAllFilmAdi();
 
     }
 
-    private void initComponents() {
+
+    private void setuprecyclerview(){
+        FavoriteMoviesRecyclerViewAdapter favAdapter = new FavoriteMoviesRecyclerViewAdapter(this,film);
+
+        recyclerView.setAdapter(favAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
 
     }
 
-    private void setuprecyclerview(List<FavList> film){
-
-    }
 
 }

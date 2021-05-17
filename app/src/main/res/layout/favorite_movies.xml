@@ -8,16 +8,16 @@
     android:orientation="vertical"
     tools:context=".activities.FavoriteMoviesActivity">
 
-
-
     <TextView
         android:id="@+id/favList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/design_default_color_secondary"
         android:text="Favori Filmlerim"
         android:textAlignment="center"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <LinearLayout
@@ -25,20 +25,23 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/filmBaslik"
+        <ImageButton
+            android:id="@+id/home"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:text="FİLM ADI" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/home"
+            android:layout_gravity="center|start"/>
 
         <ImageButton
             android:id="@+id/share"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="5dp"
-            android:background="@drawable/share" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:background="@drawable/share"
+            android:layout_gravity="center|end" />
+
 
     </LinearLayout>
 
@@ -48,10 +51,13 @@
         android:orientation="horizontal"
         android:layout_marginTop="5dp">
 
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/fav_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
+
 
     </LinearLayout>
 
